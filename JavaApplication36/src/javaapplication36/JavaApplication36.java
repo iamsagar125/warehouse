@@ -6,6 +6,54 @@ import java.util.Scanner;
  *
  * @author 3designers
  */
+class fabricatedclass{
+        int partid;
+        String[] size={"LARGE","MEDIUM","SMALL"};
+        int emplCount;
+        int quantity[]=new int[10];
+        Scanner inp=new Scanner(System.in);
+        
+        void add(){
+            System.out.println("Insert fabricated partid");
+            System.out.println("Type of part:1.LARGE,2.MEDIUM,3.SMALL");
+            System.out.println("Quantity");
+            partid=inp.nextInt();
+            for(partid=1;partid<=10;partid++)
+            {
+                do{
+                    quantity[partid]+=inp.nextInt();
+                    String s;
+                    s = new.nextLine();
+                    size[s]++;
+                }while(quantity[partid]<=10);
+            }
+        }
+            void remove(){
+            System.out.println("Remove fabricated partid");
+            System.out.println("Type of part:1.LARGE,2.MEDIUM,3.SMALL");
+            System.out.println("Quantity");
+            partid=inp.nextInt();
+            for(partid=1;partid<=10;partid++)
+            {
+                do{
+                    quantity[partid]-=inp.nextInt();
+                    String s;
+                    s = new.nextLine();
+                    size[s]--;
+                }while(quantity[partid]<=10);
+            }
+        }
+            void status(){
+                 System.out.println("PARTS ARE");
+                 for(partid=0;partid<=10;partid++)
+                 {
+                     System.out.println("Partid[partid]=quantity[partid]");
+                 }
+            }
+            
+            
+        }
+}
 class FinishedProduct{
     int productID;
     String[] size={"LARGE","MEDIUM","SMALL"};
@@ -80,16 +128,10 @@ class FinishedProduct{
         System.out.println("Product ID is: "+productID);
         System.out.println("");
         
-        
-    
-    
-        
-        
-        
-public class Tempproj {
+      public class Tempproj {
 
     /**
-     * @param args the command line arguments
+     * @param args the command line arguments    
      */
     public static void main(String[] args) {
         // TODO code application logic here
