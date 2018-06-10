@@ -214,7 +214,111 @@ class BasicMaterials{
         System.out.println("Employees count is: "+emplCount );
         
     }   
-}        
+} 
+class FabricatedParts{
+    
+    int partID;
+    String[] size={"LARGE","MEDIUM","SMALL"};
+    int quantity[]=new int[3];
+    int emplCount;
+    Scanner inp=new Scanner(System.in);
+    
+    
+    void addProduct(int pid,int s){
+        partID=pid;
+        //size[s]=s;
+        System.out.println("Enter the no.of parts : ");
+        int data=0;
+        do{
+            data=inp.nextInt();
+            if(data<=0)
+                System.out.println("Quantity need to be more than 0");
+        }
+        while(data<=0);        
+        quantity[s]+=data;        
+            
+    }
+    
+    void removeProduct(int pid,int s){
+        int data=0;
+        int flag=0;
+        do{
+            System.out.println("Enter the no.of parts to be removed: ");
+            data=inp.nextInt();
+            if(data<=0)
+                System.out.println("Quantity need to be more than 0");
+            else if(data>quantity[s]){
+                System.out.println("Insufficient no. of partss in the warehouse");
+                displayInfo();
+                System.out.println("Willing to unload less no. of parts");
+                System.out.println("Press\n 1:YES \n 0:NO");
+                boolean choice=true;
+                int value=inp.nextInt();
+                if(quantity[s]==0 && value==1){
+                    System.out.println("There are no parts in the storage location");
+                    break;
+                }
+                if(value==0){
+                    choice=false;
+                    flag=1;
+                }
+                if(!choice)
+                    break;
+            }
+        }
+        while(data<0 || data>quantity[s]);        
+        if(quantity[s]!=0 && flag==0)
+            quantity[s]-=data;
+    }
+    
+    void allotEmployee(){
+        int eval;
+        int extra;
+        int i;
+        for(i=0;i<=2;i++){
+            eval=quantity[i]/100;
+            extra=quantity[i]%100;
+            switch(i){
+                case 0:eval=eval*4;
+                       if(extra!=0 && extra<50)
+                            extra=2;
+                       else if(extra>=50)
+                            extra=4;
+                       break;
+                case 1:eval=eval*3;
+                       if(extra!=0 && extra<50)
+                            extra=2;
+                       else if(extra>=50)
+                            extra=3;
+                       break;       
+                case 2:eval=eval*2;
+                       if(extra!=0 && extra<50)
+                            extra=1;
+                       else if(extra>=50)
+                            extra=2;
+                       break;
+            }
+        System.out.println("Eval="+eval);
+        System.out.println("Extra="+extra);
+        emplCount+=eval+extra;
+        
+    }
+    }
+        
+    
+    void displayInfo(){
+        System.out.println("Part ID is: "+partID);
+        System.out.println("Partt Details are:");
+        System.out.println("SIZE\t QUANTITY\t");
+        System.out.println("------------------------");
+        for(int i=0;i<=2;i++){
+            System.out.println(size[i]+"\t"+quantity[i]);
+        }
+        allotEmployee();
+        System.out.println("Employees count is: "+emplCount );
+        
+    }   
+}
         
 public class Tempproj {
 
@@ -305,7 +409,74 @@ public class Tempproj {
                 
                 
             case 2:
-                //TODO Fabricated parts code is to be fixed!!
+                    FabricatedParts f[]=new FabricatedParts[10];
+                for(int i=0;i<f.length;i++){
+                          f[i]=new FabricatedParts();  
+                        } 
+                
+                for(;;){
+                System.out.println("\nYou are dealing with Storage area of Fabricated Parts!!!");
+                System.out.println("Permitted Fabricate Part IDs are 100-109");
+                System.out.println("Available choices to deal with particular part are \n"
+                        + " 1.Add/update any part\n"
+                        + " 2.Remove the part\n"
+                        + " 3.Employee Count \n"
+                        + " 4.Display part details\n"
+                        + " 5.Go back to main menu\n"
+                        + "Choose your option :");
+                choice=inp.nextInt();
+                int partID,pos;
+                int size;
+               
+                switch(choice){
+                    case 1:
+                        partID=acceptPID();
+                        System.out.println("Size Menu Includes: \n 1.Large\n 2.Medium\n 3.Small\n"
+                                + "Choose the size of the product to be added(0,1,2 only permitted) :");
+                        size=inp.nextInt();
+                        pos=partID%100;
+                        
+                        for(int i=0;i<f.length;i++){
+                            if(i==pos){
+                                f[i].addProduct(partID, size);
+                                f[i].allotEmployee();
+                                break;
+                            }
+                        }
+                        break;
+                    case 2:
+                        partID=acceptPID();
+                        System.out.println("Size Menu Includes: \n 1.Large\n 2.Medium\n 3.Small\n"
+                                + "Choose the size of the product to be removed(0-2) :");
+                        size=inp.nextInt();
+                        pos=partID%100;
+                        
+                        for(int i=0;i<f.length;i++){
+                            if(i==pos){
+                                f[i].removeProduct(partID, size);
+                                f[i].allotEmployee();
+                                break;
+                            }
+                        }
+                        break;
+                    case 3:
+                        int ecount=0;                     
+                        for(int i=0;i<f.length;i++){
+                            ecount+=f[i].emplCount;
+                            }
+                        System.out.println("Total number of employees in the warehouse=" +ecount);
+                        break;
+                    case 4:
+                        partID=acceptPID();
+                        pos=partID%100;
+                        f[pos].displayInfo();
+                        break;  
+                        
+                }
+                if(choice==5)
+                    break;
+                    
+            }
                 
                 break;
                 
