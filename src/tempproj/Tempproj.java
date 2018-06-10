@@ -7,6 +7,10 @@ import java.util.Scanner;
  *
  * @author VENKATESH SAGAR SAGAR
  */
+/**
+*@author SAGAR KALAL
+*class for finished products
+*/
 class FinishedProduct{
     
     int productID;
@@ -14,7 +18,11 @@ class FinishedProduct{
     int quantity[]=new int[3];
     int emplCount;
     Scanner inp=new Scanner(System.in);
-    
+    /**
+    *@param pid is for productid
+    *@param s is for size 
+    *This method addProduct puts a finished product to warehouse. 
+    */
     
     void addProduct(int pid,int s){
         productID=pid;
@@ -30,6 +38,11 @@ class FinishedProduct{
         quantity[s]+=data;        
             
     }
+     /**
+    *@param pid is for productid
+    *@param s is for size 
+    *This method removeProduct deletes a finished product from warehouse. 
+    */
     
     void removeProduct(int pid,int s){
         int data=0;
@@ -62,6 +75,10 @@ class FinishedProduct{
         if(quantity[s]!=0 && flag==0)
             quantity[s]-=data;
     }
+     /**
+    
+    *This method allotEmployee allots a employee  class or size. 
+    */
     
     void allotEmployee(){
         int eval;
@@ -96,7 +113,10 @@ class FinishedProduct{
         
     }
     }
-        
+       /**
+   
+    *This method displayInfo displays details of a product. 
+    */  
     
     void displayInfo(){
         System.out.println("Product ID is: "+productID);
@@ -111,6 +131,10 @@ class FinishedProduct{
         
     }   
 }
+/**
+*@author VENKATESH GUDI
+*class for basic materials.
+*/
 class BasicMaterials{
     
     int materialID;
@@ -118,7 +142,11 @@ class BasicMaterials{
     int quantity[]=new int[3];
     int emplCount;
     Scanner inp=new Scanner(System.in);
-    
+    /**
+    *@param mid is for materialid
+    *@param s is for size 
+    *This method addProduct adds a basic material to warehouse. 
+    */
     
     void addProduct(int mid,int s){
         materialID=mid;
@@ -134,6 +162,11 @@ class BasicMaterials{
         quantity[s]+=data;        
             
     }
+    /**
+    *@param mid is for materialid
+    *@param s is for size 
+    *This method removeProduct deletes a basic material from warehouse. 
+    */
     
     void removeProduct(int mid,int s){
         int data=0;
@@ -166,7 +199,10 @@ class BasicMaterials{
         if(quantity[s]!=0 && flag==0)
             quantity[s]-=data;
     }
+   /**
     
+    *This method allotEmployee allots a employee  class or size. 
+    */
     void allotEmployee(){
         int eval;
         int extra;
@@ -201,7 +237,10 @@ class BasicMaterials{
     }
     }
         
-    
+      /**
+   
+    *This method displayInfo displays details of a product. 
+    */  
     void displayInfo(){
         System.out.println("Material ID is: "+materialID);
         System.out.println("Material Details are:");
@@ -215,6 +254,10 @@ class BasicMaterials{
         
     }   
 } 
+/**
+*@author SAGAR KALARKOPP
+*class for finished products
+*/
 class FabricatedParts{
     
     int partID;
@@ -222,7 +265,11 @@ class FabricatedParts{
     int quantity[]=new int[3];
     int emplCount;
     Scanner inp=new Scanner(System.in);
-    
+    /**
+    *@param pid is for partid
+    *@param s is for size 
+    *This method addsProduct deletes a fabricated part to warehouse. 
+    */
     
     void addProduct(int pid,int s){
         partID=pid;
@@ -238,7 +285,11 @@ class FabricatedParts{
         quantity[s]+=data;        
             
     }
-    
+    /**
+    *@param pid is for partid
+    *@param s is for size 
+    *This method removeProduct deletes a fabricated part from warehouse. 
+    */
     void removeProduct(int pid,int s){
         int data=0;
         int flag=0;
@@ -270,7 +321,10 @@ class FabricatedParts{
         if(quantity[s]!=0 && flag==0)
             quantity[s]-=data;
     }
+     /**
     
+    *This method allotEmployee allots a employee  class or size. 
+    */
     void allotEmployee(){
         int eval;
         int extra;
@@ -304,7 +358,10 @@ class FabricatedParts{
         
     }
     }
-        
+     /**
+   
+    *This method displayInfo displays details of a product. 
+    */      
     
     void displayInfo(){
         System.out.println("Part ID is: "+partID);
