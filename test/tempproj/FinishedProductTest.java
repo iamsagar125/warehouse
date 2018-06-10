@@ -14,7 +14,7 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author KRISHNA KALAL
+ * @author SAGAR KALAL
  */
 public class FinishedProductTest {
     
