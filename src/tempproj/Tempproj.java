@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author SAGAR KALAL
+ * @author VENKATESH SAGAR SAGAR
  */
 class FinishedProduct{
     
